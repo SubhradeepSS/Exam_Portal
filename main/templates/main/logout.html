@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Logout{% endblock title %}
+
+{% block body %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ logout_message }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <a href="{% url 'main:index' %}">Click here to Login</a>
+{% endblock body %}

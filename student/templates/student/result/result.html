@@ -1,0 +1,12 @@
+{% extends 'student/base/base.html' %}
+
+{% block title %}View Paper{% endblock title %}
+{% block nav_title %}{{ Title }}{% endblock nav_title %}
+{% block url %}{% url 'student:index' %}{% endblock url %}
+{% block action %}Home{% endblock action %}
+
+{% block body %}
+    <div class="container-fluid my-2">
+        <a href="{%url 'student:results'%}" class="btn btn-primary">Check results</a>
+    </div>
+{% endblock body %}

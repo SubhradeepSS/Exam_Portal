@@ -1,0 +1,55 @@
+{% extends 'student/base/base.html' %}
+
+{% block title %}View Paper{% endblock title %}
+
+{% block body %}
+    <h3> {{ qpaper.qPaperTitle }} {{ time }}</h3>
+    <input type="hidden" id="mins" value="{{ min }}">
+    <input type="hidden" id="secs" value="{{ sec }}">
+    <div>
+        <a>Time left :<a id="dmin">{{ min }}</a> mins <a id="dsec">{{ sec }}</a> seconds</a>
+    </div>
+    <form method="POST" id="examform">
+        {% csrf_token %}
+        <ol>
+            {% for ques in question_list %}
+
+            <p>{{ ques.question }}</p>
+            <input type="radio" id="optionA" name="{{ ques.question }}" value="A">
+            <label for="optionA">{{ ques.optionA }}</label><br>
+            <input type="radio" id="optionB" name="{{ ques.question }}" value="B">
+            <label for="optionB">{{ ques.optionB }}</label><br>
+            <input type="radio" id="optionC" name="{{ ques.question }}" value="C">
+            <label for="optionC">{{ ques.optionC }}</label><br>
+            <input type="radio" id="optionD" name="{{ ques.question }}" value="D">
+            <label for="optionD">{{ ques.optionD }}</label><br>
+            {% endfor %}
+        </ol>
+        <input type="hidden" value="{{ qpaper.qPaperTitle}}" name="papertitle">
+        <input type="hidden" value="{{ exam }}" name="paper">
+        <input type="submit" value="Submit" name="PaperSubmit" onclick="submitFormOkay = true;">
+    </form>
+    
+    <script type="text/javascript">
+        var milisec = 0;
+        var seconds = document.getElementById("secs").value;
+        var minutes = document.getElementById("mins").value
+        //document.getElementById("d2").value = seconds
+
+
+        function display() {
+            if (minutes == 0 && seconds == 0) {
+                document.getElementById("examform").submit();
+            }
+            if (seconds == 0) {
+                minutes = minutes - 1
+                seconds = 60
+            }
+            seconds -= 1
+            document.getElementById("dsec").innerHTML = seconds
+            document.getElementById("dmin").innerHTML = minutes
+            setTimeout("display()", 1000)
+        }
+        display()
+    </script>
+{% endblock body %}

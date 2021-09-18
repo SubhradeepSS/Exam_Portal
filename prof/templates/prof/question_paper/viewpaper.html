@@ -1,0 +1,34 @@
+{% extends 'prof/base/base.html' %}
+
+{% block title %}About paper{% endblock title %}
+{% block navbar_title %}{{ prof.username }}{% endblock navbar_title %}
+{% block navitem_title %}{{ qpaper.qPaperTitle }}{% endblock navitem_title %}
+
+{% block buttons %}
+    <a class="btn btn-info my-sm-0 mx-2" href="{% url 'prof:view_all_ques' %}" target="_blank">All Questions</a>
+    <a class="btn btn-light my-sm-0" href="{% url 'prof:make_paper' %}">Question Papers</a>
+{% endblock buttons %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <div class="list-group">
+            {% for ques in question_list %}
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h3 class="mb-1">{{ ques.question }}</h3>
+                </div>
+                <p class="mb-1">
+                    A. {{ques.optionA}}<br>
+                    B. {{ques.optionB}}<br>
+                    C. {{ques.optionC}}<br>
+                    D. {{ques.optionD}}<br>
+                    <h5>Answer : {{ques.answer}}</h5>
+                </p>
+            </a>
+            {% empty %}
+            <h3>No Questions added to Paper</h3>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock body %}

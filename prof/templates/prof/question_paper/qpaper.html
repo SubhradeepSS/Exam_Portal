@@ -1,0 +1,59 @@
+{% extends 'prof/base/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}Question papers{% endblock title %}
+{% block navbar_title %}{{ prof.username }}{% endblock navbar_title %}
+{% block navitem_title %}Question Papers{% endblock navitem_title %}
+
+{% block buttons %}
+    <a class="btn btn-light" href="{% url 'prof:index' %}">Home</a>
+{% endblock buttons %}
+
+{% block searchInput %}
+    <form class="form-inline my-2 my-lg-0">
+        <input id='searchPaper' class="form-control mr-sm-2" type="search" placeholder="Search Question Paper" aria-label="Search">
+    </form>
+{% endblock searchInput %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div align='center'>
+            <h3 class="my-2">Create new Question Paper</h3>
+            <form method="POST" action="{% url 'prof:add_question_in_paper' %}">
+                {% csrf_token %}
+                <input class="my-3" type="text" placeholder="Question Paper Title" name="qpaper"><br>
+                <input class="btn btn-success my-1" type="submit" value="Create">
+            </form>
+        </div>
+
+        <div class="row">
+            {% for pap in qpaper_db %}
+            <div class="card my-3 mx-5 col-sm-3">
+                <h3 class="card-header">{{ pap.qPaperTitle }}</h3>
+                <div align="center" class="card-body">
+                    <form method="POST" action="{% url 'prof:view_paper' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="title" value="{{pap.qPaperTitle}}">
+                        <input class="btn btn-dark my-2" type="submit" value="View">
+                    </form>
+                    <form method="POST" action="{% url 'prof:edit_paper' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="title" value="{{pap.qPaperTitle}}">
+                        <input class="btn btn-info" type="submit" value="Edit">
+                    </form>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="title" value="{{pap.qPaperTitle}}">
+                        <input type="hidden" name="presence" value="test">
+                        <input class="btn btn-danger my-2" onclick="return confirm('Are you sure you want to delete this paper?')" type="submit" value="Delete">
+                    </form>
+                </div>
+            </div>
+            {% empty %}
+            <h3>No Question Papers available</h3>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{% static 'prof/js/qpaper.js' %}"></script>
+{% endblock body %}

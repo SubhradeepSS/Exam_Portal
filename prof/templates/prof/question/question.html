@@ -1,0 +1,25 @@
+{% extends 'prof/base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}About question{% endblock title %}
+{% block navbar_title %}{{ prof.username }}{% endblock navbar_title %}
+{% block navitem_title %}Create new Question{% endblock navitem_title %}
+
+{% block buttons %}
+    <a href="{% url 'prof:view_all_ques' %}" class="btn btn-primary mx-1">View All Questions</a><br>
+    <a href="{% url 'prof:index' %}" class="btn btn-light mx-2">Home</a>
+{% endblock buttons %}
+
+{% block body %}
+    <div class="container-fluid my-2">
+        <div align="center">
+            <div class="container d-flex h-100 row justify-content-center col-20">
+                <form align="center" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input class="btn btn-success" type="submit" value="Create">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

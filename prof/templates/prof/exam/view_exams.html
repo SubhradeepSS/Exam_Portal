@@ -1,0 +1,71 @@
+{% extends 'prof/base/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}Exams{% endblock title %}
+{% block navbar_title %}{{ prof.username }}{% endblock navbar_title %}
+{% block navitem_title %}Exams{% endblock navitem_title %}
+
+{% block buttons %}
+    <button type="button" class="btn btn-primary mx-3" id="updateButton"
+    onclick="smoothScroll(document.getElementById('exams'))">View all Exams</button>
+    <a class="btn btn-light " href="{% url 'prof:index' %}">Home</a>
+{% endblock buttons %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h3 class="alert alert-secondary my-1" align="center">Create a new exam</h3>
+        <div align='center'>
+
+            <div class="container d-flex h-100 row justify-content-center col-20">
+                <form align='center' method="POST">
+                    {% csrf_token %}
+                    {{ examform|crispy }}
+                    <input class="btn btn-success" type="submit" value="Create">
+                </form>
+            </div>
+
+        </div>
+        <div id='exams'>
+            <h1 class="alert alert-dark my-3" align="center">Exams available</h1>
+            <form class="form-inline my-2">
+                <input id="searchExam" class="form-control mr-sm-2" type="search" placeholder="Search Exam"
+                    aria-label="Search">
+                <a class="btn btn-dark" href="{% url 'prof:view_groups' %}" target="_blank">View
+                    Groups</a>
+            </form>
+            <div class="row">
+                {% for t in exams %}
+                <div class="card my-3 mx-5 col-sm-3">
+                    <h3 class="card-header">{{ t.name }}</h3>
+                    <div class="card-body">
+
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            Start : {{ t.start_time }}<br>
+                            Expiry : {{ t.end_time }}
+                        </h6>
+                        <p class="card-text">
+                            Total Marks : {{t.total_marks}}<br>
+                            Duration : {{t.duration}}<br>
+                            Question Paper : <a
+                                href="{% url 'prof:view_specific_paper' t.question_paper.id %}">{{ t.question_paper.qPaperTitle }}</a><br>
+                            Student Group(s) :
+                            {% for group in t.student_group.all %}
+                            {{ group.category_name }}
+                            {% endfor %}
+                        </p>
+                        <a href="{% url 'prof:edit_exam' t.id %}" class="card-link btn btn-info">Edit</a>
+                    </div>
+                </div>
+                {% empty %}
+                <h3>No exams</h3>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="{% static 'prof/js/exams.js' %}"></script>
+{% endblock body %}

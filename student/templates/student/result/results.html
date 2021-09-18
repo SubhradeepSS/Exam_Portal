@@ -1,0 +1,24 @@
+{% extends 'student/base/base.html' %}
+
+{% block title %}Results{% endblock title %}
+{% block nav_title %} Results {% endblock nav_title %}
+{% block url %}{% url 'student:index' %}{% endblock url %}
+{% block action %}Home{% endblock action %}
+
+{% block body %}
+    <div class="container-fluid my-2">
+        <ul class="list-group">
+            {% for i in paper %}
+                {% if  i.completed == 1 %}
+                <li class="list-group-item list-group-item-action my-1"><h5>{{ i.examname }}</h5>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ i.examname }}" name="paper">
+                        <input type="submit" class="btn btn-info" value="View result">
+                    </form>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock body %}

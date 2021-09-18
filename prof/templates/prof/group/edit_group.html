@@ -1,0 +1,22 @@
+{% extends 'prof/base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit group{% endblock title %}
+{% block navbar_title %}Edit group{% endblock navbar_title %}
+
+{% block buttons %}
+    <a class="btn btn-warning" href="{% url 'prof:view_groups' %}">Cancel</a>
+{% endblock buttons %}
+
+{% block body %}
+    <div align='center' class="container-fluid">
+        <div class="container d-flex h-100 row justify-content-center col-50">
+            <form align="center" method="POST">
+                {% csrf_token %}
+                {{ group_form|crispy }}
+                <input class="btn btn-info" type="submit" value="Update">
+            </form>
+        </div>
+        <a onclick="return confirm('Are you sure you want to delete this group?')" class="btn btn-danger my-3" href="{% url 'prof:delete_group' group.id %}">Delete</a><br>
+    </div>
+{% endblock body %}

@@ -1,0 +1,16 @@
+{% extends 'student/base/base.html' %}
+
+{% block title %}Home{% endblock title %}
+{% block nav_title %}{{ stud.username }}{% endblock nav_title %}
+{% block url %}{% url 'main:logoutUser' %}{% endblock url %}
+{% block action %}Logout{% endblock action %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div align='center'>
+            <br>
+            <a href="{% url 'student:exams' %}" class="btn btn-primary" text-align='center'>Exams</a><br><br><br>
+            <a href="{% url 'student:results' %}" class="btn btn-primary" text-align='center'>Results</a><br><br><br>
+        </div>
+    </div>
+{% endblock body %}

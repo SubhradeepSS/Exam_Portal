@@ -1,0 +1,37 @@
+{% extends 'student/base/base.html' %}
+
+{% block title %}Home{% endblock title %}
+{% block nav_title %} Exams {% endblock nav_title %}
+{% block url %}{% url 'student:index' %}{% endblock url %}
+{% block action %}Home{% endblock action %}
+
+{% block body %}
+   <div class="container-fluid my-2">
+        <div id="completed_exams" class="alert alert-primary">
+            <h3 align="center">Tests Completed</h3>
+            <ol class="list-group">
+                {% for i in paper %}
+                {% if  i.completed == 1 %}
+                <li class="list-group-item list-group-item-action my-1 text-center">{{ i.examname }}</li>
+                {% endif %}
+                {% endfor %}
+            </ol>
+        </div>
+        <div id="upcoming_exams" class="my-6 alert alert-secondary">
+            <h3 align="center" >UpComing Exams</h3>
+            <ol class="list-group">
+                {% for i in paper %}
+                {% if  i.completed == 0 %}
+                    <li class="list-group-item list-group-item-action my-1 text-center">{{ i.examname }}
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ i.examname }}" name="paper">
+                            <input class="btn btn-info" type="submit" value="Attempt">
+                        </form>
+                    </li>
+                {% endif %}
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+{% endblock body %}

@@ -1,0 +1,32 @@
+{% extends 'prof/base/base.html' %}
+
+{% block title %}Students in group{% endblock title %}
+{% block navbar_title %}Group: {{ group.category_name}}{% endblock navbar_title %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div>
+            <h2>Add Student to group</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <h4>Username</h4>
+                <input type="text" placeholder="Username" name="username">
+                <input type="submit" value="Add">
+            </form>
+        </div>
+
+        <div>
+            <h3>Students:</h3><br>
+            <ul>
+                {% for student in students %}
+                <li>{{student.username}}</li>
+                {% empty %}
+                <h4>No students in the group</h4>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+    <a class="btn btn-primary" href="{% url 'prof:view_specific_group' group.id %}">Go back to this group</a>
+{% endblock body %}

@@ -1,0 +1,29 @@
+{% extends 'prof/base/base.html' %}
+
+{% block title %}Exam{% endblock title %}
+{% block navbar_title %}Exam : {{ exam.name }}{% endblock navbar_title %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div align="center">
+            <div>
+                total_marks: {{exam.total_marks}}<br>
+                duration: {{exam.duration}}<br>
+                question_paper: {{exam.question_paper.qPaperTitle}}
+                <a href="{% url 'prof:view_specific_paper' exam.question_paper.id %}">View Paper</a><br>
+                student_group:
+                <ul>
+                    {% for group in student_group %}
+                    <li>
+                        {{ group.category_name }}
+                        <a href="{% url 'prof:view_specific_group' group.id %}">View group</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                start time: {{ exam.start_time }}
+            </div>
+
+        </div>
+        <a href="{% url 'prof:edit_exam' exam.id %}" class="btn btn-danger">Edit</a>
+    </div>
+{% endblock body %}

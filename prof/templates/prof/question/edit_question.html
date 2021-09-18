@@ -1,0 +1,24 @@
+{% extends 'prof/base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit question{% endblock title %}
+{% block navbar_title %}{{ prof.username }}{% endblock navbar_title %}
+{% block navitem_title %}Edit question{% endblock navitem_title %}
+
+{% block buttons %}
+    <a class="btn btn-warning mx-2" href="{% url 'prof:view_all_ques' %}">Cancel</a><br>
+    <a class="btn btn-light" href="{% url 'prof:index' %}">Home</a>
+{% endblock buttons %}
+
+{% block body %}
+    <div align='center' class="container-fluid">
+        <div class="container d-flex h-100 row justify-content-center col-20">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-info" type="submit" value="Update">
+            </form>
+        </div>
+
+    </div>
+{% endblock body %}

@@ -1,0 +1,26 @@
+{% extends 'prof/base/base.html' %}
+
+{% block title %}About group{% endblock title %}
+{% block navbar_title %}Group: {{ group.category_name }}{% endblock navbar_title %}
+
+{% block buttons %}
+    <a class="btn btn-light" href="{% url 'main:logoutUser' %}">Logout</a>
+{% endblock buttons %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div align='center' id="group_students">
+        <h2>Students in group</h2>
+        <ul>
+            {% for s in group_students %}
+                <li>{{ s.username }}</li>
+                {% empty %}
+                    <h3>No students added in group</h3>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+    
+    <a class="btn btn-primary mx-3 my-3" href="{% url 'prof:edit_group' group.id %}">Edit group</a><br>
+    <a class="btn btn-primary mx-3 my-3" href="{% url 'prof:view_groups' %}">Go back to Groups</a>
+{% endblock body %}

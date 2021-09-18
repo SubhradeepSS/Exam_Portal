@@ -1,0 +1,23 @@
+{% extends 'prof/base/base.html' %}
+
+{% block title %}Students{% endblock title %}
+{% block navbar_title %}{{ prof.username }}{% endblock navbar_title %}
+{% block navitem_title %}Students{% endblock navitem_title %}
+
+{% block buttons %}
+    <a href="{% url 'prof:index' %}" class="btn btn-light">Home</a>>
+{% endblock buttons %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div align='center'>
+                <ul>
+                    {% for s in students %}
+                    <li>{{ s.username }}</li>
+                    {% empty %}
+                    <h2>No students available</h2>
+                    {% endfor %}
+                </ul>
+        </div>
+    </div>
+{% endblock body %}

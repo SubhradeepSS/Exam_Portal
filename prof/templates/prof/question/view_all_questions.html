@@ -1,0 +1,48 @@
+{% extends 'prof/base/base.html' %}
+{% load static %}
+
+{% block title %}Questions{% endblock title %}
+{% block navbar_title %}{{ prof.username }}{% endblock navbar_title %}
+{% block navitem_title %}Questions{% endblock navitem_title %}
+
+{% block searchInput %}
+    <form class="form-inline my-2 my-lg-0">
+        <input id='searchQuestion' class="form-control mr-sm-2" type="search" placeholder="Search Question" aria-label="Search">
+    </form>
+{% endblock searchInput %}
+
+{% block buttons %}
+    <a class="btn btn-primary mx-2" href="{% url 'prof:add_question' %}">Add question</a><br>
+    <a class="btn btn-light" href="{% url 'prof:index' %}">Home</a>
+{% endblock buttons %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="list-group">
+            {% for ques in question_db %}
+            <div class="list-group-item list-group-item-action flex-column align-items-start my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h3 class="mb-1">{{ ques.question }}</h3>
+                </div>
+                <p class="mb-1">
+                    A. {{ques.optionA}}<br>
+                    B. {{ques.optionB}}<br>
+                    C. {{ques.optionC}}<br>
+                    D. {{ques.optionD}}<br>
+                    <h5>Answer : {{ques.answer}}</h5>
+                </p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ques.qno}}" name="qno">
+                    <a class="btn btn-info mx-2" href="{% url 'prof:edit_question' ques.qno %}">Edit</a>
+                    <input class="btn btn-danger" type="submit"
+                        onclick="return confirm('Are you sure you want to delete this question?')" value="Delete">
+                </form>
+            </div>
+            {% empty %}
+            <h3>No Questions available</h3>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{% static 'prof/js/questions.js' %}"></script>
+{% endblock body %}

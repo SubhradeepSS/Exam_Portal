@@ -1,0 +1,67 @@
+{% extends 'prof/base/base.html' %}
+
+{% block title %}Edit paper{% endblock title %}
+{% block navbar_title %}{{ prof.username }}{% endblock navbar_title %}
+{% block navitem_title %}Edit Question Paper{% endblock navitem_title %}
+
+{% block buttons %}
+    <a class="btn btn-warning my-sm-0 mx-2" href="{% url 'prof:make_paper' %}">Cancel / Done</a>
+{% endblock buttons %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h2 align="center"> {{ qpaper.qPaperTitle}} </h2>
+
+        <div class="list-group">
+            <h3 class="alert alert-success">Questions added</h3>
+            {% for ques in question_list %}
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h4 class="mb-1">{{ ques.question }}</h4>
+                </div>
+                <p class="mb-1">
+                    A. {{ques.optionA}}<br>
+                    B. {{ques.optionB}}<br>
+                    C. {{ques.optionC}}<br>
+                    D. {{ques.optionD}}<br>
+                    <h5>Answer : {{ques.answer}}</h5>
+                </p>
+                <form method = "POST">
+                    {% csrf_token %}
+                        <input class="btn btn-danger" onclick="return confirm('Are you sure you want to remove this question from the paper?')"" type="submit" value="Remove" name="remove">
+                        <input type="hidden" value="{{qpaper.qPaperTitle}}" name="paper">
+                        <input type="hidden" value="{{ques.qno}}" name="question">
+                    </form>
+            </a>
+            {% empty %}
+            <h5>No Questions added</h5>
+            {% endfor %}
+        </div>
+
+        <div class="list-group my-5">
+            <h3 class="alert alert-danger">Questions not added</h3>
+            {% for ques in ques_left %}
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start my-2">
+                <div class="d-flex w-100 justify-content-between">
+                    <h3 class="mb-1">{{ ques.question }}</h3>
+                </div>
+                <p class="mb-1">
+                    A. {{ques.optionA}}<br>
+                    B. {{ques.optionB}}<br>
+                    C. {{ques.optionC}}<br>
+                    D. {{ques.optionD}}<br>
+                    <h5>Answer : {{ques.answer}}</h5>
+                </p>
+                <form method = "POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="qnumber" value="{{ ques.qno }}">
+                    <input type="hidden" name="titlepaper" value="{{ qpaper.qPaperTitle }}">
+                    <input class="btn btn-success" type="submit" value = "Add" >
+                    </form>
+            </a>
+            {% empty %}
+            <h5>All Questions added</h5>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock body %}
