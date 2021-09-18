@@ -15,7 +15,7 @@
         <h3 class="alert alert-secondary my-1" align="center">Create a new group</h3>
         <div align='center' id="create_group">
             <div class="container d-flex h-100 row justify-content-center col-20">
-                <form align='center' method="POST">
+                <form style="width: 80%; font-weight: bolder;"  method="POST">
                     {% csrf_token %}
                     {{ groupForm|crispy }}
                     <input class="btn btn-success" type="submit" value="Create">

@@ -10,12 +10,12 @@
         <h3 align="center">Score : {{ exam.score }}</h3>
         <ol class="list-group">
             {% for ques in quesn %}
-            <li class="list-group-item list-group-item-action my-1"><h4>{{ ques.question }}</h4>
-                <ul>A. {{ques.optionA}}</ul>
-                <ul>B. {{ques.optionB}}</ul>
-                <ul>C. {{ques.optionC}}</ul>
-                <ul>D. {{ques.optionD}}</ul>
-            <br>
+            <li class="list-group-item list-group-item-action my-1"><h6><i>{{ ques.question }}</i></h6>
+               &nbsp; <strong>A.</strong> {{ques.optionA}}<br>
+               &nbsp; <strong>B.</strong> {{ques.optionB}}<br>
+               &nbsp; <strong>C.</strong> {{ques.optionC}}<br>
+               &nbsp; <strong>D.</strong> {{ques.optionD}}<br>
+            <hr>
 
             {% if ques.choice != 'E' %}
             <a>Selected Option - {{ques.choice}}</a><br>

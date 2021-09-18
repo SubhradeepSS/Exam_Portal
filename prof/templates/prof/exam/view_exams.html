@@ -14,11 +14,11 @@
 
 {% block body %}
     <div class="container-fluid">
-        <h3 class="alert alert-secondary my-1" align="center">Create a new exam</h3>
-        <div align='center'>
+        <h2 style="font-style: italic;" class="alert alert-secondary my-1" align="center">Create a new exam</h2>
+        <div style="margin-left:10%; margin-right: 10%;">
 
-            <div class="container d-flex h-100 row justify-content-center col-20">
-                <form align='center' method="POST">
+            <div style = "font-weight: bold;" class="container d-flex h-100 row justify-content-center col-20">
+                <form style = "width:100%;" method="POST">
                     {% csrf_token %}
                     {{ examform|crispy }}
                     <input class="btn btn-success" type="submit" value="Create">
@@ -27,39 +27,44 @@
 
         </div>
         <div id='exams'>
-            <h1 class="alert alert-dark my-3" align="center">Exams available</h1>
-            <form class="form-inline my-2">
-                <input id="searchExam" class="form-control mr-sm-2" type="search" placeholder="Search Exam"
-                    aria-label="Search">
-                <a class="btn btn-dark" href="{% url 'prof:view_groups' %}" target="_blank">View
-                    Groups</a>
-            </form>
-            <div class="row">
-                {% for t in exams %}
-                <div class="card my-3 mx-5 col-sm-3">
-                    <h3 class="card-header">{{ t.name }}</h3>
-                    <div class="card-body">
+            <h2 class="alert alert-dark my-3" style="font-style: italic" align="center">Exams available</h2>
+            <div style = "width: 100%; margin-left:10%; margin-right: 10%;">
+                <form class="form-inline my-2">
+                    <input id="searchExam" class="form-control mr-sm-2" type="search" placeholder="Search Exam"
+                        aria-label="Search">
+                    <a class="btn btn-dark" href="{% url 'prof:view_groups' %}" target="_blank">View
+                        Groups</a>
+                </form>
+                <div class="row">
+                    {% for t in exams %}
+                    <div class="card my-3 mx-5 col-sm-3">
+                        <h3 class="card-header">{{ t.name }}</h3>
+                        <div class="card-body">
 
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            Start : {{ t.start_time }}<br>
-                            Expiry : {{ t.end_time }}
-                        </h6>
-                        <p class="card-text">
-                            Total Marks : {{t.total_marks}}<br>
-                            Duration : {{t.duration}}<br>
-                            Question Paper : <a
-                                href="{% url 'prof:view_specific_paper' t.question_paper.id %}">{{ t.question_paper.qPaperTitle }}</a><br>
-                            Student Group(s) :
-                            {% for group in t.student_group.all %}
-                            {{ group.category_name }}
-                            {% endfor %}
-                        </p>
-                        <a href="{% url 'prof:edit_exam' t.id %}" class="card-link btn btn-info">Edit</a>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                Start : {{ t.start_time }}<br>
+                                Expiry : {{ t.end_time }}
+                            </h6>
+                            <p class="card-text">
+                                Total Marks : {{t.total_marks}}<br>
+                                Duration : {{t.duration}}<br>
+                                Question Paper : <a
+                                    href="{% url 'prof:view_specific_paper' t.question_paper.id %}">{{ t.question_paper.qPaperTitle }}</a><br>
+                                Student Group(s) :
+                                {% for group in t.student_group.all %}
+                                {{ group.category_name }}
+                                {% endfor %}
+                            </p>
+                            <a href="{% url 'prof:edit_exam' t.id %}" class="card-link btn btn-info">Edit</a>
+                        </div>
                     </div>
+                    {% empty %}
+                    </br>
+                    <div style="width:100%; margin-left: 5%;">
+                        <h3>No exams</h3>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% empty %}
-                <h3>No exams</h3>
-                {% endfor %}
             </div>
         </div>
     </div>

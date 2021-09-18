@@ -6,7 +6,16 @@
 {% block action %}Home{% endblock action %}
 
 {% block body %}
-    <div class="container-fluid my-2">
-        <a href="{%url 'student:results'%}" class="btn btn-primary">Check results</a>
+<br/>
+<center>
+    <div style="width: 80%;" class="jumbotron container-fluid my-2">
+        <h1 class="display-4">Congratulations!🎉</h1>
+        <p class="lead">You have successfuly submitted your response.</p>
+        <hr class="my-4">
+        <p>Visit the link below to check your result.</p>
+        <p class="lead">
+          <a class="btn btn-primary" href="{%url 'student:results'%}"  role="button">Check results</a>
+        </p>
     </div>
+</center>
 {% endblock body %}

@@ -4,9 +4,9 @@
 {% block nav_title %} Results {% endblock nav_title %}
 {% block url %}{% url 'student:index' %}{% endblock url %}
 {% block action %}Home{% endblock action %}
-
 {% block body %}
-    <div class="container-fluid my-2">
+
+<div style="width: 80%;" class="container-fluid my-2">
         <ul class="list-group">
             {% for i in paper %}
                 {% if  i.completed == 1 %}

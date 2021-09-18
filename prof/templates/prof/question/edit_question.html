@@ -11,9 +11,9 @@
 {% endblock buttons %}
 
 {% block body %}
-    <div align='center' class="container-fluid">
+    <div style="width:100%; margin-left: 10%; margin-right: 10%;" class="container-fluid">
         <div class="container d-flex h-100 row justify-content-center col-20">
-            <form method="POST">
+            <form style="width:100%; font-weight: bold;" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <input class="btn btn-info" type="submit" value="Update">
