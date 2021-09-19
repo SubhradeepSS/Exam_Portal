@@ -1,34 +1,38 @@
-
-<p align='center'><img src='https://res.cloudinary.com/dqlh4eyt8/image/upload/v1630815038/playground-logo_1_jrjppd.png' width="150" ></p>
-<h1 align='center'> Playground</h1>
+<p align='center'><img src='https://user-images.githubusercontent.com/46227193/133924458-d6f66df8-f0f8-4d56-951e-213200a2ad83.jpeg' width="300" ></p>
 <p align='center'>
-In India, more than 95% of schools don't allow smartphones in class. Being a Computer Science teacher becomes very difficult as it is nearly impossible to check the handwritten code of each student line by line. Also talking in India, in most schools, the students don't have the privilege to have one computer each for them so that they can run their code on their own. So it becomes a nightmare for the teacher as they might have to manually type each code of each student and run it or take the risk of missing out on bugs. So we came up with Playground to make this job easier. Another reason for creating Playground was that once we entered college we understood the importance of coding. Coding not only helps you in a Software job but also helps increase logical reasoning and problem-solving ability. But many students don't have the chance of coding till they reach college. Why? Because there are so many students in India who can not afford a laptop or computer. So we decided to build a progressive web app because in today's world almost everyone uses a phone. Now they can start coding early and learn from online teachers. <br/> <br/>
-In addition to that, we conducted a survey among our teachers where we found that teachers give more than 40% of their time to creating questions for various class tests, assignments and exams. So this teacher's day, we wanted to help them out. For this, we came up with crowdsourcing question bank idea. Anyone across the world can now help teachers make questions. <br/> <strong>By everyone, for teachers!❤</strong>
+Due to pertaining covid situation, it has been quite a hassle for colleges and schools to conduct examinations for students and there are limited Indian platforms available for students for this purpose. Also many unprivileged students who can't pay high fee to schools charging extra money from them for conducting assessements and grading, this platform will be a viable solution for this problem and will provide a cost effective, seamless and transparent experience for teachers as well as studetns and will be widely availbale for all schools.<br></br>
+Furthermore, we performed a survey of our teachers and discovered that they spend more than 60% of their time developing questions for various class assessments, assignments, and exams. So, we decided to lend a hand. For this, we devised the concept of a platform where teachers can just input the questions to conduct any kind of tests.<br></br> 
 </p>
-<img width="1327" alt="playground user interface" src="https://user-images.githubusercontent.com/67703407/132119834-68cd31ee-179a-4cff-80b1-d2979fb87146.png">
+<p align='center'><img src='https://user-images.githubusercontent.com/46227193/133924440-7ddb553c-d8bb-47dc-a46f-01e45a96328c.png' width="800" ></p>
 
 ## What is it? ⛹️‍♂️
-There are two subsystems of the Playground:
-1. Evaluation of answer sheets of the exams conducted traditionally is a tedious and critical task. A lot of time and energy is invested by the teachers to check every single line of code, look for bugs and find the corresponding output. So, with Playground, you can simply upload a picture of a student's handwritten code and we will handle the rest. Using Google's Vision API, we scan the image and retrieve the text and give it back to you in a code editor. But unlike teachers, machines are not always right, so if some minor flaws are there you can edit them in the code editor, which will then run the code and give you the output. So instead of going through the entire code, use Playground to do it in less than 2 mins.
-2. Teachers have to work hard everyday. Starting from explaining the concepts in a pace all students understand, to giving proper assignments, to clearing all the doubts. So we thought let us make another important job for our teachers super easy. With Playground, you can also easily create question papers and assignments for your students. This is done by crowdsourcing. Students and teachers across the world can add their favourite questions through a form and then you'll get a variety of coding questions which are pre-approved by us. So just select some of the random questions from our page and you're done with the assignment! It's that simple!
+The project is a complete Exam Portal system built for educational institutions like schools and colleges. The portal serves as a single platform that can be used by all the professors and students, having their own set of work to be done. Following are the three levels of users along with the supported features that can be done by them in the portal:
+* ***admin*** 🛠
+   * maintains the entire portal system through the django-admin site.
+   * has access to the entire database consisting of all the data stored.
 
+* ***professor*** 👔
 
-[![Starware](https://img.shields.io/badge/⭐-Starware-f5a91a?labelColor=black)](https://github.com/zepfietje/starware)
+   * MCQ questions can be created/edited by professors which then further can be added to one or more question paper created by them.
+   * The professor can create different groups of students as per their wish.
+   * Exams can be created which can have a Question paper alloted to it by them.
 
-Playground is Starware.  
-This means you're free to use the project, as long as you star its GitHub repository.  
-Your appreciation makes us grow and glow up. ⭐
+* ***student*** 🧑‍
+   * Can attempt exams allotted to them within the time constraints set by the professor
+   * Can view their marks and solutions after completing the exam.
+   * Have a list of all the exams completed and yet to be attempted in a single page 
+
 
 
 ## Cloning the Application in local ⬇️
 1. Following software needs to be setup in the system for using the application in local
-* [git](https://git-scm.com/downloads)
-* [python](https://www.python.org/downloads/)
-* [pip](https://pip.pypa.io/en/stable/installing/)
+   * [git](https://git-scm.com/downloads)
+   * [python](https://www.python.org/downloads/)
+   * [pip](https://pip.pypa.io/en/stable/installing/)
 
 2. Clone the repo by running the following command in any terminal
    ```sh
-   git clone https://github.com/SubhradeepSS/College-Portal.git
+   git clone https://github.com/SubhradeepSS/Exam_Portal.git
    ```
    
 3. Open the project in any source code editor.
@@ -61,7 +65,7 @@ For running the project, navigate to the project directory and follow the follow
 
 
 ### Deployment 🚀
-View deployed site [here](https://college-portal-v01.herokuapp.com/).
+View deployed site [here](https://exam_portal-v01.herokuapp.com/).
 ##### Credentials:
 | User Type      | Username | Password |
 | ----------- | ----------- | -----------|
@@ -71,35 +75,28 @@ View deployed site [here](https://college-portal-v01.herokuapp.com/).
 
 The admin can create more users(professors/students) from the django admin panel and can add them to corresponding groups, after which they can login through the site.
 
-## How we built it 🧑‍💻
-We used Next.js in the frontend and Node.js in the backend with MongoDB as our database. Next, we used the Google Vision API for scanning the image and retrieving the handwritten text. The handwritten text was displayed in a code editor with full syntax highlighting and available for currently two languages, c++ and python. When you click submit, we generated a new code file for the corresponding language and displayed it's output on the screen. For the second section of Playground, we created a form which adds data to the database. Then we retrieve the data through axios and display the questions that are approved. We created a special route with a passcode for admins, where they can manually approve the questions in the database.
-
-## Challenges we ran into 🥺
-We faced numerours challenges throughout the journey. Firstly, we had to look for a good OCR model. We checked so many github repositories and packages but we couldn't find a one that had very high efficiency. So we finally decided to go with the Google Vision API in Google Cloud. But in Google Cloud, for getteing the API key, we needed credit card details and since none of had one, we had to borrow it from a friend which led us to our next challenge. We saw that while development, we had already used up so many requests and if we made the site live, the number of requests will increase because of which our friend might have to pay to Google Cloud. Since we wanted to remain in the free tier, we decided not to host the web application. Other than that we tried creating our very own compiler for the first time, which were initailly full of bugs and it took us a lot of time to fix them.
-
-## Accomplishments that we're proud of 😎
-The biggest accomplishment for us was that we learned so many new things in just 2 days. We implemented OCR, TypeScript, Axios and API calls. We were able to overcome all the challenges and were able to create a completely functional prototype the way we had envisioned. Even though one of our teammates fell sick and wasn't able to contribute, we didn't lose hope and stayed up all night. It was tiring, but fun as well. I am most proud of the fact that this product will be able to help many teachers across the globe.
-
-## What we learned 🤓
-Being a group of javascript developers, we tried our hands on typescript this time. We learnt how to use Next.js and implement it with TypeScript and SCSS. Moreover, we created a progressive web app with offline support as well. As we wanted to read the handwritten text, we found out about OCR for text extraction. We researched on it and finally decided to try out the Google Vision API which was something very new for us.
-
 ## Built With 💕
-- [ ] [Django](https://www.djangoproject.com/)
-- [ ] [Django REST Framework](https://www.django-rest-framework.org/)
-- [ ] Python
-- [ ] HTML
-- [ ] CSS
-- [ ] JavaScript
-- [ ] [Bootstrap](https://getbootstrap.com/)
-- [ ] [Postman](https://www.postman.com/)
-- [ ] [Visual Studio Code](https://code.visualstudio.com/)
-- [ ] [Heroku](https://www.heroku.com/)
+* [Django](https://www.djangoproject.com/)
+* [Django REST Framework](https://www.django-rest-framework.org/)
+* Python
+* HTML
+* CSS
+* JavaScript
+* [Bootstrap](https://getbootstrap.com/)
+* [Postman](https://www.postman.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Heroku](https://www.heroku.com/)
 
+
+## API info 👷
+The APIs were built using **`Django`** and **`Django RESTFramework`**, which were further tested out using **`Postman`**. Some of the APIs tested can be found out [here](https://documenter.getpostman.com/view/11308411/UUxtEAco).
 
 ## Next steps 🔥
-Next, we want to increase the support by providing more options for languages like javascript, java, c and so on. We also want to increase the variety of questions varying through a variety of topics and difficulty levels. In addition to that, we plan to create a neural search framework that will allow us to filter the questions on the basis of topic and difficulty and help you find similar questions. Lastly, we wish to build our very own OCR model for text extraction. This will solve our problems of billing while using external models.
-
-<img src='https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_photos/001/637/595/datas/full_width.png' />
+- [ ] Support for separate subjects and courses alloted to professors and students.
+- [ ] Improved exam proctoring using AI based plagiarism checker, video and audio recording.
+- [ ] Discussion forum for students sorted in different class groups as well as subjects, where one particular student can consult the concerned faculty or other fellow students. 
+- [ ] Proper result and analysis reports of exams(subjectwise) in dashboard for the students.
+- [ ] Professor's view of complete date of students enrolled in their subjects.
 
 
 ## Contributing 👩‍💻
