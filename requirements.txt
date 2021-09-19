@@ -4,3 +4,5 @@ django-crispy-forms==1.9.2
 pytz==2020.1
 sqlparse==0.4.2
 djangorestframework
+gunicorn
+django-heroku
