@@ -19,39 +19,27 @@ Playground is Starware.
 This means you're free to use the project, as long as you star its GitHub repository.  
 Your appreciation makes us grow and glow up. ⭐
 
-## Team ✨
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://aniket.live"><img src="https://avatars.githubusercontent.com/u/67703407?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aniket Pal</b></sub></a><br /><a href="#infra-Aniket762" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/Aniket762/playground/commits?author=Aniket762" title="Tests">⚠️</a> <a href="https://github.com/Aniket762/playground/commits?author=Aniket762" title="Code">💻</a> <a href="#ideas-Aniket762" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/Aniket762/playground/commits?author=Aniket762" title="Documentation">📖</a> <a href="#projectManagement-Aniket762" title="Project Management">📆</a></td>
-    <td align="center"><a href="http://aabhassao.me"><img src="https://avatars.githubusercontent.com/u/58210877?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aabhas Sao </b></sub></a><br /><a href="#design-kirito-236" title="Design">🎨</a> <a href="#infra-kirito-236" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/Aniket762/playground/commits?author=kirito-236" title="Code">💻</a></td>
-    <td align="center"><a href="https://sumana.live/"><img src="https://avatars.githubusercontent.com/u/63084088?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sumana Basu</b></sub></a><br /><a href="#design-sumana2001" title="Design">🎨</a> <a href="https://github.com/Aniket762/playground/commits?author=sumana2001" title="Documentation">📖</a> <a href="https://github.com/Aniket762/playground/commits?author=sumana2001" title="Code">💻</a></td>
-  </tr>
-</table>
-
-## Prerequisites 👨‍💻
-Following software needs to be setup in the system
+## Cloning the Application in local ⬇️
+1. Following software needs to be setup in the system for using the application in local
 * [git](https://git-scm.com/downloads)
 * [python](https://www.python.org/downloads/)
 * [pip](https://pip.pypa.io/en/stable/installing/)
 
-
-## Cloning the Application in local 💻
-1. Clone the repo by
+2. Clone the repo by running the following command in any terminal
    ```sh
    git clone https://github.com/SubhradeepSS/College-Portal.git
    ```
-2. Open the project in any source code editor.
-3. Open terminal and run
+   
+3. Open the project in any source code editor.
+4. Open terminal and run
    ```sh
    pip install -r requirements.txt
    ```
+   This installs all the packages required for running the application locally
 
-## Running the Application
-### Local
+## Running the Application 🚚
+### Local 💻
 For running the project, navigate to the project directory and follow the following instructions:
 
 * Type the following in the command line:
@@ -72,7 +60,7 @@ For running the project, navigate to the project directory and follow the follow
 * Now any student/professor can login using their own credentials.
 
 
-### Deployment
+### Deployment 🚀
 View deployed site [here](https://college-portal-v01.herokuapp.com/).
 ##### Credentials:
 | User Type      | Username | Password |
@@ -108,10 +96,17 @@ Being a group of javascript developers, we tried our hands on typescript this ti
 - [ ] [Heroku](https://www.heroku.com/)
 
 
-## What's next for Playground 🔥
+## Next steps 🔥
 Next, we want to increase the support by providing more options for languages like javascript, java, c and so on. We also want to increase the variety of questions varying through a variety of topics and difficulty levels. In addition to that, we plan to create a neural search framework that will allow us to filter the questions on the basis of topic and difficulty and help you find similar questions. Lastly, we wish to build our very own OCR model for text extraction. This will solve our problems of billing while using external models.
 
 <img src='https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_photos/001/637/595/datas/full_width.png' />
 
 
+## Contributing 👩‍💻
+Any contributions made to the project are **greatly appreciated**.
 
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
