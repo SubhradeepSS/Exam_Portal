@@ -33,76 +33,56 @@ Your appreciation makes us grow and glow up. ⭐
 </table>
 
 ## Prerequisites 👨‍💻
-
-### Install Node JS
-Refer to https://nodejs.org/en/ to install nodejs
-
-### Install create-react-app
-Install create-react-app npm package globally. This will help to easily run the project and also build the source files easily. Use the following command to install create-react-app
-
-```bash
-npm install -g create-react-app
-```
-
-## Cloning and Running the Application in local 💻
-
-Clone the project in localhost
-```bash
-git clone https://github.com/Aniket762/playground.git
-```
-Install all the npm packages. Go into the web folder and type the following command to install all npm packages
-
-```bash
-npm install
-```
-
-In order to run the application in development mode type the following command
-
-```bash
-yarn dev
-```
-
-The Application Runs on **localhost:3000**
-
-### To spin up the backend server
-
-Navigate to the main project folder in a seperate terminal. Then install all npm packages
-```bash
-npm install 
-```
-
-If you don't have nodemon globally installed on your system, install it so the server can autorefresh 
-```bash
-npm install -g nodemon
-```
-
-Now it's time to spin up the backend server. Run the lines
-```bash
-npm run dev
-```
-If you get an error immediately, don't worry. The final step is to connect to the MongoDB database.
-
-Note: The Server Runs on **localhost:8080**
-
-## Connecting to the Database
-Spin up your cluster in MongoDB and replace your connection with URI in `.env`
-If you face any problems, refer to the [MongoDB](https://www.mongodb.com/blog/postquick-start-nodejs-mongodb--how-to-get-connected-to-your-database) website.
+Following software needs to be setup in the system
+* [git](https://git-scm.com/downloads)
+* [python](https://www.python.org/downloads/)
+* [pip](https://pip.pypa.io/en/stable/installing/)
 
 
-## Connecting to the Database if you haven't used MongoDB Atlas before
-Install the MongoDB Node.js Driver with the following command:
-```bash
-npm install mongodb
-```
+## Cloning the Application in local 💻
+1. Clone the repo by
+   ```sh
+   git clone https://github.com/SubhradeepSS/College-Portal.git
+   ```
+2. Open the project in any source code editor.
+3. Open terminal and run
+   ```sh
+   pip install -r requirements.txt
+   ```
 
-Set up a [MongoDB Atlas Database](https://www.youtube.com/watch?v=rPqRyYJmx2g) by following this short MongoDB setup video till the *3:20* mark. Stop after that mark!
+## Running the Application
+### Local
+For running the project, navigate to the project directory and follow the following instructions:
 
-On your Cluster home page, select CONNECT > Connect your application. 
-1. Select Node.js in the drop down for your driver, and select the latest version. 
-1. Then, copy the connecting string (URI).
-1. Paste this string as the value of mongoURI inside `.env` of this project.
+* Type the following in the command line:
+    ```sh
+    python manage.py makemigrations
+    python manage.py migrate
+    python manage.py createsuperuser
+    # this will ask for username, email(optional) and password. 
+    # Enter some credentials to be used later for django admin functionality.
+    python manage.py runserver
+  ```
 
-Replace the `<password>` section of the string with your Database Access password. Viola, your server should now successfuly connect to MongoDB!
+* Log on to [django admin site](http://127.0.0.1:8000/admin) using the superuser credentials
+    * Click on **Groups** section and create 2 groups - ***Professor*** and ***Student***
+    * Click on **Users** section and create some users, and also make each user belong to one of the groups- Professor/Student as per role
+    * Logout of the admin site and go to http://127.0.0.1:8000/ where the home page of the project will be rendered.
+
+* Now any student/professor can login using their own credentials.
+
+
+### Deployment
+View deployed site [here](https://college-portal-v01.herokuapp.com/).
+##### Credentials:
+| User Type      | Username | Password |
+| ----------- | ----------- | -----------|
+| admin      | admin       | admin |
+| student   | student_1        | password_student_1 |
+| prof   | prof_1        | password_prof_1 |
+
+The admin can create more users(professors/students) from the django admin panel and can add them to corresponding groups, after which they can login through the site.
+
 ## How we built it 🧑‍💻
 We used Next.js in the frontend and Node.js in the backend with MongoDB as our database. Next, we used the Google Vision API for scanning the image and retrieving the handwritten text. The handwritten text was displayed in a code editor with full syntax highlighting and available for currently two languages, c++ and python. When you click submit, we generated a new code file for the corresponding language and displayed it's output on the screen. For the second section of Playground, we created a form which adds data to the database. Then we retrieve the data through axios and display the questions that are approved. We created a special route with a passcode for admins, where they can manually approve the questions in the database.
 
@@ -116,20 +96,16 @@ The biggest accomplishment for us was that we learned so many new things in just
 Being a group of javascript developers, we tried our hands on typescript this time. We learnt how to use Next.js and implement it with TypeScript and SCSS. Moreover, we created a progressive web app with offline support as well. As we wanted to read the handwritten text, we found out about OCR for text extraction. We researched on it and finally decided to try out the Google Vision API which was something very new for us.
 
 ## Built With 💕
-- [ ] React
-- [ ] Nextjs 
-- [ ] Nodejs
-- [ ] Javascript
-- [ ] Express
-- [ ] Typescript
-- [ ] MongoDB
-- [ ] Mongoose
-- [ ] Google Cloud Platform
-- [ ] Google Vision API
-- [ ] Cloudinary
-- [ ] Scss
-- [ ] Vercel
-- [ ] Heroku
+- [ ] [Django](https://www.djangoproject.com/)
+- [ ] [Django REST Framework](https://www.django-rest-framework.org/)
+- [ ] Python
+- [ ] HTML
+- [ ] CSS
+- [ ] JavaScript
+- [ ] [Bootstrap](https://getbootstrap.com/)
+- [ ] [Postman](https://www.postman.com/)
+- [ ] [Visual Studio Code](https://code.visualstudio.com/)
+- [ ] [Heroku](https://www.heroku.com/)
 
 
 ## What's next for Playground 🔥
