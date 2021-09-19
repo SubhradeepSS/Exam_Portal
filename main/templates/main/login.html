@@ -3,6 +3,13 @@
 {% block title %}Login{% endblock title %}
 
 {% block body %}
+
+    <style>
+        body{
+            background-image: url("https://image.shutterstock.com/shutterstock/photos/689919184/display_1500/stock-vector-engraved-hand-drawn-in-old-sketch-and-vintage-style-scientific-formulas-and-calculations-in-689919184.jpg");
+        }
+    </style>
+    
     {% if wrong_cred_message %}
     <div class="alert alert-danger alert-dismissible" role="alert">
         <strong>{{ wrong_cred_message }}</strong> : Please enter correct credentials
@@ -12,19 +19,22 @@
     </div>
     {% endif %}
 
-    <div id="login">
-        <h1 class="text-center text-black pt-5">Welcome to our Portal</h1>
+    <div id="login" class="container">
         <div class="container">
+            
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
+                    <div style = "min-height: 400px;" id="login-box" class="col-lg-12">
+                        <br/>
+                        <h1><strong><i>College Portal</i></strong></h1>
+                        <hr/>  
                         <form id="login-form" class="form" action="" method="post">
                             {% csrf_token %}
-                            <div class="form-group" align='center'>
+                            <div class="form-group" >
                                 <h3><label for="username" class="text-info">Username:</label><br></h3>
                                 <input type="text" name="username" id="username" class="form-control">
                             </div>
-                            <div class="form-group" align='center'>
+                            <div class="form-group">
                                 <h3><label for="password" class="text-info">Password:</label><br></h3>
                                 <input type='password' name="password" id="password" class="form-control">
                             </div>

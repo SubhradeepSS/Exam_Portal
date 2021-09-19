@@ -8,9 +8,12 @@
     <a href="{% url 'prof:index' %}" class="btn btn-light">Home</a>>
 {% endblock buttons %}
 
+
 {% block body %}
-    <div class="container-fluid">
-        <div align='center'>
+<div class="container-fluid">
+        <br/>
+        <i><h4>Enrolled Students:</h4></i>
+        <div >
                 <ul>
                     {% for s in students %}
                     <li>{{ s.username }}</li>
