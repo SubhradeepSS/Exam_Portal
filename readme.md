@@ -66,7 +66,12 @@ For running the project, navigate to the project directory and follow the follow
 
 ### Deployment 🚀
 View deployed site [here](https://examportal-v1.herokuapp.com/).
-
+##### Credentials:
+| User Type      | Username | Password |
+| ----------- | ----------- | -----------|
+| admin      | admin       | admin |
+| student   | student_1        | password_student_1 |
+| prof   | prof_1        | password_prof_1 |
 
 The admin can create more users(professors/students) from the django admin panel and can add them to corresponding groups, after which they can login through the site.
 
